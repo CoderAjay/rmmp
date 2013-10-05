@@ -8,6 +8,14 @@
   <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.5.js" type="text/javascript"></script>
     <script type="text/javascript">
         $(document).ready(function () {
+            $(".addComment").click(function () {
+                if ($(".container commentBox").length <= 0) {
+                    var commentBox = $(".cloneComment").clone();
+                    commentBox.removeClass("cloneComment");
+                    $(".container").append(commentBox);
+                    commentBox.show();
+                }
+            });
             $.ajax({
                 url: "rmmp Default.aspx/getComments",
                 type: "POST",
@@ -40,14 +48,6 @@
                     }
                 });
                 $(".container .commentBox").html("<img src='http://www.heathrowtosouthampton.co.uk/Web/images/gif/Processing1.gif' />")
-            });
-            $(".addComment").click(function () {
-                if ($(".container commentBox").length <= 0) {
-                    var commentBox = $(".cloneComment").clone();
-                    commentBox.removeClass("cloneComment");
-                    $(".container").append(commentBox);
-                    commentBox.show();
-                }
             });
         });
     </script>

@@ -10,7 +10,7 @@ using System.Web.UI.WebControls;
 using System.Web.UI.WebControls.WebParts;
 using System.Xml.Linq;
 /// <summary>
-
+/// <Auther Ajay Singh>
 /// </summary>
 public class IssuesBAL
 {
@@ -46,7 +46,20 @@ public class IssuesBAL
         {
         }
     }
-    
+    public DataTable getVoters(Int64 issueId, Int64 number)
+    {
+        try
+        {
+            return ob.getVoters(issueId,number);
+        }
+        catch
+        {
+            throw;
+        }
+        finally
+        {
+        }
+    }
     public void postIssue(issuesBO issuesbo)
     {
         try

@@ -10,7 +10,9 @@ using System.Web.UI.WebControls;
 using System.Web.UI.WebControls.WebParts;
 using System.Xml.Linq;
 using System.Data.SqlClient;
-
+/// <summary>
+/// <Author Ajay Singh (MCA)>
+/// </summary>
 
 
 
@@ -76,6 +78,36 @@ public class IssuesDAL
             if (con.State == ConnectionState.Open)
                 con.Close();
         }
+    }
+    public DataTable getVoters(Int64 issueId,Int64 number)
+    {
+        try
+        {
+
+            query = "VOTERNAMES_FETCH";
+            if (con.State == ConnectionState.Closed)
+            {
+                con.Open();
+            }
+            dap = new SqlDataAdapter(query, con);
+            dap.SelectCommand.CommandType = CommandType.StoredProcedure;
+            dap.SelectCommand.Parameters.AddWithValue("@issueId", issueId);
+            dap.SelectCommand.Parameters.AddWithValue("@Number",number);
+            DataSet ds = new DataSet();
+            dap.Fill(ds, "temp");
+            dap.Dispose();
+            return ds.Tables["temp"];
+        }
+        catch
+        {
+            throw;
+        }
+        finally
+        {
+            if (con.State == ConnectionState.Open)
+                con.Close();
+        }
+
     }
     public void postIssues(issuesBO issuesbo)
     {

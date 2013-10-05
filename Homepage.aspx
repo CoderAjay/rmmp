@@ -183,9 +183,9 @@
                          CollapseControlID="LBComment" 
                          Collapsed="True"
                          SuppressPostBack="true"
-                           />   
-                    </div>     
+                           />        
               </asp:Panel>
+              </div>
       </div>
     <%-- Comments end--%>
 </ContentTemplate>

@@ -22,7 +22,7 @@ public partial class Homepage : System.Web.UI.Page
            //Btnsearch.Enabled = false;
            //LBsearch.Enabled = false;
             loadStates();
-            loadlist(10,0);  
+            loadlist(50,0);  
         }
     }
     private void loadStates()
@@ -55,15 +55,15 @@ public partial class Homepage : System.Web.UI.Page
     }
     protected void LBtrending_Click(object sender, EventArgs e)
     {
-        loadlist(100,0);
+        loadlist(50,0);
     }
     protected void LBrecent_Click(object sender, EventArgs e)
     {
-        loadlist(100, 1);
+        loadlist(50, 1);
     }
     protected void LBpopular_Click(object sender, EventArgs e)
     {
-        loadlist(100, 2);
+        loadlist(50, 2);
     }
     private void loadlist(Int64 number,Int16 type)
     {

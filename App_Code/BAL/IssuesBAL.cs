@@ -9,20 +9,26 @@ using System.Web.UI.HtmlControls;
 using System.Web.UI.WebControls;
 using System.Web.UI.WebControls.WebParts;
 using System.Xml.Linq;
+
+
 /// <summary>
-/// <Auther Ajay Singh>
+/// Author:		<Ajay Singh >
+/// Email :      <meajaysingh@hotmail.com>
+/// Create date: <Create Date,5/10/2013> 
 /// </summary>
+
+
 public class IssuesBAL
 {
     private IssuesDAL ob = new IssuesDAL();
     public IssuesBAL()
     {
     }
-    public DataTable getIssues()
+    public DataTable getIssues(Int64 number ,Int16 type)
     {
         try
         {
-            return ob.getIssues();
+            return ob.getIssues(number,type);
         }
         catch
         {
@@ -32,11 +38,11 @@ public class IssuesBAL
         {
         }
     }
-    public DataTable getIssues(Int64 issueId)
+    public DataTable getIssue(Int64 issueId)
     {
         try
         {
-            return ob.getIssues(issueId);
+            return ob.getIssue(issueId);
         }
         catch
         {

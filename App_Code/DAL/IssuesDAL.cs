@@ -10,8 +10,11 @@ using System.Web.UI.WebControls;
 using System.Web.UI.WebControls.WebParts;
 using System.Xml.Linq;
 using System.Data.SqlClient;
+
 /// <summary>
-/// <Author Ajay Singh (MCA)>
+/// Author:		<Ajay Singh >
+/// Email :      <meajaysingh@hotmail.com>
+/// Create date: <Create Date,5/10/2013> 
 /// </summary>
 
 
@@ -24,7 +27,7 @@ public class IssuesDAL
     string query;
 
 	 
-    public DataTable getIssues()
+    public DataTable getIssues(Int64 NUMBER,Int16 TYPE)
     {
         try
         {
@@ -36,6 +39,9 @@ public class IssuesDAL
             }
           dap = new SqlDataAdapter(query,con);
           dap.SelectCommand.CommandType = CommandType.StoredProcedure;
+          dap.SelectCommand.Parameters.AddWithValue("@number",NUMBER) ;
+          dap.SelectCommand.Parameters.AddWithValue("@type", TYPE);
+
           DataSet ds = new DataSet();
            dap.Fill(ds,"temp");
            dap.Dispose();
@@ -51,7 +57,7 @@ public class IssuesDAL
         }
     }
 
-    public DataTable getIssues(Int64 issueId)
+    public DataTable getIssue(Int64 issueId)
     {
         try
         {

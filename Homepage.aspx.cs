@@ -22,7 +22,7 @@ public partial class Homepage : System.Web.UI.Page
            //Btnsearch.Enabled = false;
            //LBsearch.Enabled = false;
             loadStates();
-            loadlist();  
+            loadlist(10,0);  
         }
     }
     private void loadStates()
@@ -53,10 +53,21 @@ public partial class Homepage : System.Web.UI.Page
         Server.Transfer("usercomment.aspx", true);
 
     }
-
-    private void loadlist()
+    protected void LBtrending_Click(object sender, EventArgs e)
     {
-        ListIssues.DataSource =(DataTable) issuesbal.getIssues();
+        loadlist(100,0);
+    }
+    protected void LBrecent_Click(object sender, EventArgs e)
+    {
+        loadlist(100, 1);
+    }
+    protected void LBpopular_Click(object sender, EventArgs e)
+    {
+        loadlist(100, 2);
+    }
+    private void loadlist(Int64 number,Int16 type)
+    {
+        ListIssues.DataSource =(DataTable) issuesbal.getIssues(number,type); /* type 0,1,2 */
         ListIssues.DataBind();
 
 
@@ -64,7 +75,7 @@ public partial class Homepage : System.Web.UI.Page
     protected void ListIssues_ItemDataBound(object sender, RepeaterItemEventArgs e)
     {
         HiddenField issueId = (HiddenField)e.Item.FindControl("HFIssueId");
-        DataTable dt = (DataTable)issuesbal.getIssues(Convert.ToInt64(issueId.Value));
+        DataTable dt = (DataTable)issuesbal.getIssue(Convert.ToInt64(issueId.Value));
         DataTable voterDt = (DataTable)issuesbal.getVoters(Convert.ToInt64(issueId.Value));
         /****Issues***/
         ((Image)e.Item.FindControl("IMGprofilePic")).ImageUrl = dt.Rows[0]["profilePic"].ToString();
@@ -133,7 +144,7 @@ public partial class Homepage : System.Web.UI.Page
                 supportdenybo.issueId = issueId;
                 supportdenybo.supportDeny = true;
                 supportdenybal.updateData(supportdenybo);
-                DataTable dt = issuesbal.getIssues(issueId);
+                DataTable dt = issuesbal.getIssue(issueId);
                 ((Label)e.Item.FindControl("LBLsupportCount")).Text = dt.Rows[0]["supportCount"].ToString();
                 ((Label)e.Item.FindControl("LBLdenyCount")).Text = dt.Rows[0]["denyCount"].ToString();
             }
@@ -143,7 +154,7 @@ public partial class Homepage : System.Web.UI.Page
                 supportdenybo.issueId = issueId;
                 supportdenybo.supportDeny = false;
                 supportdenybal.updateData(supportdenybo);
-                DataTable dt = issuesbal.getIssues(issueId);
+                DataTable dt = issuesbal.getIssue(issueId);
                 ((Label)e.Item.FindControl("LBLsupportCount")).Text = dt.Rows[0]["supportCount"].ToString();
                 ((Label)e.Item.FindControl("LBLdenyCount")).Text = dt.Rows[0]["denyCount"].ToString();
 
@@ -232,9 +243,4 @@ public partial class Homepage : System.Web.UI.Page
 
     }
 
-
-    protected void btnPost_Click(object sender, EventArgs e)
-    {
-
-    }
 }

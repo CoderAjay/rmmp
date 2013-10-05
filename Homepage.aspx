@@ -64,16 +64,19 @@
                 
                 	<div class="issue_links">
                     	<ul class="nav nav-pills">
-                            <li><a href="javascript:void(0);">Trending Issues</a></li>
+                            <li><asp:LinkButton ID="LBtrending" runat="server" Text="Trending Issues" OnClick="LBtrending_Click" /></li>
+                            <li><asp:LinkButton ID="LBrecent" runat="server" Text="Recent Issues" OnClick="LBrecent_Click" /></li>
+                            <li><asp:LinkButton ID="LBpopular" runat="server" Text="Most Popular Tags" OnClick="LBpopular_Click" /></li>
+                          <%--  <li><a href="javascript:void(0);">Trending Issues</a></li>
                             <li><a href="javascript:void(0);">Recent Issues</a></li>
-                            <li><a href="javascript:void(0);">Most Popular Tags</a></li>
+                            <li><a href="javascript:void(0);">Most Popular Tags</a></li>--%>
                         </ul>
                 	</div>
                     <div class="search_box">
                         <asp:LinkButton ID="LBsearch" runat="server" class="icon-search search_icon"/>
                         <asp:TextBox ID="txtsearchBox" class="search-query seach_box_inner" runat="server"/>
-                        <%--<asp:TextBoxWatermarkExtender runat="server" TargetControlID="txtsearchBox" WatermarkText="Search for Member, Constituency or state" 
-                           />--%>
+                        <asp:TextBoxWatermarkExtender runat="server" TargetControlID="txtsearchBox" WatermarkText="Search for Member, Constituency or state" 
+                           />
                     </div>
             </div>
               
@@ -165,7 +168,7 @@
                     
                     <div class="text_comment">
                             <asp:TextBox ID="txtcomment" runat="server" TextMode="MultiLine" style="width:95%" />
-                             <%--<asp:TextBoxWatermarkExtender ID="TextBoxWatermarkExtender1" runat="server" TargetControlID="txtComment" WatermarkText="Puts Your Comments"/>--%>
+                             <asp:TextBoxWatermarkExtender ID="TextBoxWatermarkExtender1" runat="server" TargetControlID="txtComment" WatermarkText="Puts Your Comments"/>
                         </div>
                        <div class="post_button">
                            <asp:Button ID="btnPost" runat="server" Text="Post" CommandName="post" style=" padding:  3px 15px 3px 15px;" />
@@ -191,7 +194,13 @@
 </ContentTemplate>
 </asp:UpdatePanel> 
 </ItemTemplate></asp:Repeater>
-</ContentTemplate></asp:UpdatePanel> 
+</ContentTemplate>
+     <Triggers>
+         <asp:AsyncPostBackTrigger ControlID="LBtrending" EventName="Click" />
+         <asp:AsyncPostBackTrigger ControlID="LBrecent" EventName="Click" />
+         <asp:AsyncPostBackTrigger ControlID="LBpopular" EventName="Click" />
+     </Triggers>
+ </asp:UpdatePanel> 
                </div>
            
             <%-- Issues end--%>

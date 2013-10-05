@@ -195,15 +195,10 @@
                </div>
              
             <%-- Issues end--%>
-
-
-
                 </div>
              </div>
         </div>
-
-
-        </form>
+     </form>
 </body>
 
 </html>

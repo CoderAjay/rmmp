@@ -139,7 +139,7 @@
                           </div>	
                                       <div class="comm_section">
                                     <div class="name_label">
-                                       <asp:Label runat="server" Text='<%#DataBinder.Eval(Container.DataItem,"firstName") %> '/><asp:Label runat="server" Text='<%#DataBinder.Eval(Container.DataItem,"lastName") %>'/> 
+                                       <asp:Label runat="server" Text='<%#DataBinder.Eval(Container.DataItem,"firstName") + " " %> '/><asp:Label runat="server" Text='<%#DataBinder.Eval(Container.DataItem,"lastName") %>'/> 
                                      </div>
                              <div class="date_label">
                                  <asp:Label runat="server" Text='<%# DataBinder.Eval(Container.DataItem,"postedOn","{0:d/MMM/yyyy hh:mm tt}") %>'/>
@@ -159,13 +159,12 @@
                              <asp:AsyncPostBackTrigger ControlID="LBlike" EventName="Click" />
                              <asp:AsyncPostBackTrigger ControlID="LBdislike" EventName="Click" />
                             <asp:AsyncPostBackTrigger ControlID="btnPost" EventName="Click" />
-
                          </Triggers>
                      </asp:UpdatePanel>
                    </ItemTemplate></asp:Repeater> 
                     
                     <div class="text_comment">
-                            <asp:TextBox ID="txtcomment" runat="server" />
+                            <asp:TextBox ID="txtcomment" runat="server" TextMode="MultiLine" style="width:95%" />
                              <asp:TextBoxWatermarkExtender ID="TextBoxWatermarkExtender1" runat="server" TargetControlID="txtComment" WatermarkText="Puts Your Comments"/>
                         </div>
                        <div class="post_button">
@@ -193,7 +192,7 @@
 </ItemTemplate></asp:Repeater>
 </ContentTemplate></asp:UpdatePanel> 
                </div>
-             
+           
             <%-- Issues end--%>
                 </div>
              </div>

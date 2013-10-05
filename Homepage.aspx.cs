@@ -17,10 +17,10 @@ public partial class Homepage : System.Web.UI.Page
 
     protected void Page_Load(object sender, EventArgs e)
     {
-        Btnsearch.Enabled = false;
-        LBsearch.Enabled = false;
        if (!Page.IsPostBack)
-        {
+       {
+           Btnsearch.Enabled = false;
+           LBsearch.Enabled = false;
             loadStates();
             loadlist();  
         }
@@ -129,7 +129,7 @@ public partial class Homepage : System.Web.UI.Page
             }
             else if (btncmdname == "support")
             {
-                supportdenybo.guid = 1; /** from session **/
+                supportdenybo.guid = 44; /** from session **/
                 supportdenybo.issueId = issueId;
                 supportdenybo.supportDeny = true;
                 supportdenybal.updateData(supportdenybo);
@@ -139,7 +139,7 @@ public partial class Homepage : System.Web.UI.Page
             }
             else if (btncmdname == "deny")
             {
-                supportdenybo.guid = 1; /** from session **/
+                supportdenybo.guid = 44; /** from session **/
                 supportdenybo.issueId = issueId;
                 supportdenybo.supportDeny = false;
                 supportdenybal.updateData(supportdenybo);
@@ -155,16 +155,11 @@ public partial class Homepage : System.Web.UI.Page
                 commentsbo.comment = ((TextBox)(e.Item.FindControl("TxtComment"))).Text;
                 commentsbo.issueId = issueId;
                 txtcomment.Text = "";
-                commentsbo.guid = 1; /** from session **/
+                commentsbo.guid =44; /** from session **/
                 commentbal.postComment(commentsbo);
                 ((Repeater)e.Item.FindControl("ListComments")).DataSource = (DataTable)commentbal.getComments(Convert.ToInt64(issueId));
                 ((Repeater)e.Item.FindControl("ListComments")).DataBind();
-        
-                //DataList addnew = new DataList();
-                //addnew.ItemTemplate = DataListComments.ItemTemplate;
-                //addnew.DataSource = commentbal.getComment(65);
-                //addnew.DataBind();
-                //((PlaceHolder)e.Item.FindControl("PlaceHolderlistitem")).Controls.Add(addnew);
+         
              }
         }
         catch
@@ -201,7 +196,7 @@ public partial class Homepage : System.Web.UI.Page
             commentId = Convert.ToInt64(e.CommandArgument);
             if (btncmdname == "like")
             {
-                likedislikebo.guId = 1; /*** from session ***/
+                likedislikebo.guId = 44; /*** from session ***/
                 likedislikebo.commentId = commentId;
                 likedislikebo.likeDislike = true;
                 likedislikebal.updateData(likedislikebo);
@@ -213,7 +208,7 @@ public partial class Homepage : System.Web.UI.Page
             }
             if (btncmdname == "dislike")
             {
-                likedislikebo.guId = 1;
+                likedislikebo.guId = 44;
                 likedislikebo.commentId = commentId;
                 likedislikebo.likeDislike = false;
                 likedislikebal.updateData(likedislikebo);

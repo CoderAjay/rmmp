@@ -72,8 +72,8 @@
                     <div class="search_box">
                         <asp:LinkButton ID="LBsearch" runat="server" class="icon-search search_icon"/>
                         <asp:TextBox ID="txtsearchBox" class="search-query seach_box_inner" runat="server"/>
-                        <asp:TextBoxWatermarkExtender runat="server" TargetControlID="txtsearchBox" WatermarkText="Search for Member, Constituency or state"
-                           />
+                        <%--<asp:TextBoxWatermarkExtender runat="server" TargetControlID="txtsearchBox" WatermarkText="Search for Member, Constituency or state" 
+                           />--%>
                     </div>
             </div>
               
@@ -122,7 +122,7 @@
                             </Triggers>
                         </asp:UpdatePanel>
                             <div class="bound2">
-                                <asp:LinkButton ID="LBcomment" runat="server" Text="Comment" CommandName="comment"/>
+                                <asp:LinkButton ID="LBcomment" runat="server" Text="Comment"/>
                             </div>
                         </div>
                        
@@ -130,8 +130,8 @@
                     </div>
     <%-- Comments start--%>              
           <div class="comment_cont">
-     		   <asp:UpdatePanel runat="server" UpdateMode="Conditional"><ContentTemplate>     
                     <asp:Panel ID="Panel1" runat="server">    
+     		   <asp:UpdatePanel runat="server" UpdateMode="Conditional"><ContentTemplate>     
                           <div class="user_outer">
                                 <asp:Repeater runat="server" ID="ListComments" OnItemCommand="ListComments_ItemCommand" OnItemDataBound="ListComments_ItemDataBound" > <ItemTemplate>     
                                  <div class="img_outer">
@@ -165,26 +165,27 @@
                     
                     <div class="text_comment">
                             <asp:TextBox ID="txtcomment" runat="server" TextMode="MultiLine" style="width:95%" />
-                             <asp:TextBoxWatermarkExtender ID="TextBoxWatermarkExtender1" runat="server" TargetControlID="txtComment" WatermarkText="Puts Your Comments"/>
+                             <%--<asp:TextBoxWatermarkExtender ID="TextBoxWatermarkExtender1" runat="server" TargetControlID="txtComment" WatermarkText="Puts Your Comments"/>--%>
                         </div>
                        <div class="post_button">
                            <asp:Button ID="btnPost" runat="server" Text="Post" CommandName="post" style=" padding:  3px 15px 3px 15px;" />
                        </div> 
                         
-                    <asp:CollapsiblePanelExtender ID="CollapsiblePanelExtender1" runat="Server"
+                   
+               </ContentTemplate>
+                    <Triggers>
+                        <asp:AsyncPostBackTrigger ControlID="LBcomment" EventName="Click" />
+                    </Triggers>
+            	</asp:UpdatePanel>
+                         <asp:CollapsiblePanelExtender ID="CollapsiblePanelExtender1" runat="Server"
                          TargetControlID="Panel1"
                          ExpandControlID="LBComment"
                          CollapseControlID="LBComment" 
                          Collapsed="True"
                          SuppressPostBack="true"
                            />   
-                    </div>  
-                 </asp:Panel>
-               </ContentTemplate>
-                    <Triggers>
-                        <asp:AsyncPostBackTrigger ControlID="LBcomment" EventName="Click" />
-                    </Triggers>
-            	</asp:UpdatePanel>
+                    </div>     
+              </asp:Panel>
       </div>
     <%-- Comments end--%>
 </ContentTemplate>

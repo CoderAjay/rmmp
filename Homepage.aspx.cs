@@ -19,8 +19,8 @@ public partial class Homepage : System.Web.UI.Page
     {
        if (!Page.IsPostBack)
        {
-           Btnsearch.Enabled = false;
-           LBsearch.Enabled = false;
+           //Btnsearch.Enabled = false;
+           //LBsearch.Enabled = false;
             loadStates();
             loadlist();  
         }
@@ -65,7 +65,7 @@ public partial class Homepage : System.Web.UI.Page
     {
         HiddenField issueId = (HiddenField)e.Item.FindControl("HFIssueId");
         DataTable dt = (DataTable)issuesbal.getIssues(Convert.ToInt64(issueId.Value));
-        DataTable voterDt = (DataTable)issuesbal.getVoters(Convert.ToInt64(issueId.Value), 2);
+        DataTable voterDt = (DataTable)issuesbal.getVoters(Convert.ToInt64(issueId.Value));
         /****Issues***/
         ((Image)e.Item.FindControl("IMGprofilePic")).ImageUrl = dt.Rows[0]["profilePic"].ToString();
         ((Label)e.Item.FindControl("LBLpostedBy")).Text = dt.Rows[0]["firstName"].ToString() + " " + dt.Rows[0]["lastName"].ToString();

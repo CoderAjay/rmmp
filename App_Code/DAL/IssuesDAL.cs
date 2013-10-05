@@ -79,7 +79,7 @@ public class IssuesDAL
                 con.Close();
         }
     }
-    public DataTable getVoters(Int64 issueId,Int64 number)
+    public DataTable getVoters(Int64 issueId)
     {
         try
         {
@@ -92,7 +92,6 @@ public class IssuesDAL
             dap = new SqlDataAdapter(query, con);
             dap.SelectCommand.CommandType = CommandType.StoredProcedure;
             dap.SelectCommand.Parameters.AddWithValue("@issueId", issueId);
-            dap.SelectCommand.Parameters.AddWithValue("@Number",number);
             DataSet ds = new DataSet();
             dap.Fill(ds, "temp");
             dap.Dispose();

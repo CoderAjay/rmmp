@@ -46,11 +46,11 @@ public class IssuesBAL
         {
         }
     }
-    public DataTable getVoters(Int64 issueId, Int64 number)
+    public DataTable getVoters(Int64 issueId)
     {
         try
         {
-            return ob.getVoters(issueId,number);
+            return ob.getVoters(issueId);
         }
         catch
         {

@@ -56,7 +56,7 @@
         <div id="main_right">
             <div id="home_container">
             	<div class="home_right">
-                	<label class="user_outr">Hi User,</label>
+                	<label class="user_outr"><asp:Label ID="LBLuserName" runat="server" Text="Hi Singh"/></label>
                 	<input type="button" class="btn btn_home" value="Home" />
                     <input type="button" class="btn btn_home" value="Logout" />
                    

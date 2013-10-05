@@ -17,6 +17,8 @@ public partial class Homepage : System.Web.UI.Page
 
     protected void Page_Load(object sender, EventArgs e)
     {
+        Btnsearch.Enabled = false;
+        LBsearch.Enabled = false;
        if (!Page.IsPostBack)
         {
             loadStates();

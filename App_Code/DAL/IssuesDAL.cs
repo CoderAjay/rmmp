@@ -114,6 +114,34 @@ public class IssuesDAL
         }
 
     }
+    public DataTable Issues_Numbers(Int64 mpId)
+    {
+        try
+        {
+
+            query = "ISSUES_NUMBER";
+            if (con.State == ConnectionState.Closed)
+            {
+                con.Open();
+            }
+            dap = new SqlDataAdapter(query, con);
+            dap.SelectCommand.CommandType = CommandType.StoredProcedure;
+            dap.SelectCommand.Parameters.AddWithValue("@mpId", mpId);
+            DataSet ds = new DataSet();
+            dap.Fill(ds, "temp");
+            dap.Dispose();
+            return ds.Tables["temp"];
+        }
+        catch
+        {
+            throw;
+        }
+        finally
+        {
+            if (con.State == ConnectionState.Open)
+                con.Close();
+        }
+    }
     public void postIssues(issuesBO issuesbo)
     {
         try

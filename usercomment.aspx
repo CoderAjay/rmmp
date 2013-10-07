@@ -1,84 +1,93 @@
-﻿<%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="asp" %>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<script runat="server">
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="usercomment.aspx.cs" Inherits="usercomment" %>
 
-    Protected Sub Btnsearch_Click(sender As Object, e As EventArgs)
-
-    End Sub
-</script>
+<!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>Rate My MP</title>
+<title>Rate my MP</title>
+</head>
 <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
-<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
 <link rel="stylesheet" type="text/css" href="css/bootstrap-responsive.css" />
+<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
+<link type="text/css" rel="stylesheet" href="css/jquery-te-1.4.0.css">
 <link rel="stylesheet" type="text/css" href="css/style.css" />
 
 
+<script type="text/javascript" src="js/jquery.min.js" charset="utf-8"></script>
+<script type="text/javascript" src="js/jquery-te-1.4.0.min.js" charset="utf-8"></script>
 <script type="text/javascript" src="js/bootstrap.js"></script>
-</head>
 
 <body>
-    <form id="frmhomepage" runat="server">
-        <asp:ToolkitScriptManager ID="ToolkitScriptManager1" runat="server" EnablePartialRendering="true"/>
 <div id="main"> 
 	<div id="main_container">
     	<div id="main_left">
         	<div class="logo">
             	<a href="index.aspx"><img src="img/LOG.png" /></a>
             </div>
-            <div class="search_bar">
-            	<h3>Select a Member</h3>
-             <asp:UpdatePanel runat="server" ><ContentTemplate>
-                <div class="select_outr">
-                    <asp:DropDownList ID="DDListSate" runat="server" CssClass="member_select">
-                        <items><asp:ListItem>State</asp:ListItem></items>
-                    </asp:DropDownList>
-                </div>
-                <div class="select_outr">
-                <asp:DropDownList ID="DDListConstituency" runat="server" CssClass="member_select">
-                        <items><asp:ListItem>Constituency</asp:ListItem></items>
-                    </asp:DropDownList>
-                </div>
-               </ContentTemplate></asp:UpdatePanel>
-                <div class="search_button">
-                    <asp:Button ID="Btnsearch" CssClass="btn" runat="server" Text="Search" OnClick="Btnsearch_Click" />
-                </div>
-               
-               
-            </div>
-            <div class="main_left_links">
+         <div class="mp_info">
+          <div class="heading">
+               		<h5>15th Lok Sabha <br />Member of Parliament profile</h5>
+               </div>
+          	 <div class="mp_info_inner">
+              	<div class="mp_img">
+                  <div class="mp_pic"> <img src="img/2.jpg"/>
+                  </div>
+               </div>
+              
+           <div class="up_labels">
+                   <div class="name1">
+                  <h5>Name:</h5><label>abc</label>
+                  </div>
+                  <div class="name1">
+                  <h5>Constituency:</h5><label>xyz</label>
+                  </div>
+                  <div class="name1">
+                  <h5>Party:</h5><label>asd</label>
+                  </div>
+               </div>
+             </div>
+          <div class="down_labels">
+               <div class="name1">
+               <h5>Contact:</h5><label>987654321</label>
+               </div>
+               <div class="name1">
+                 <h5>E-mail:</h5><label>abc@gmail.com</label>
+                 </div>
+                 <div class="name1">
+                   <h5>Educational Qualification:</h5><label>Graduation</label>
+                   </div>
+                   <div class="name1">
+                 <h5>Profession:</h5><label>Agriculture</label>
+                 </div>
+                 <div class="name1">
+               <h5>Permanent Address:</h5><label>Delhi</label>
+               </div>
+               <div class="name1">
+             <h5>Present Address:</h5><label>Mumbai</label>
+             </div>
+          </div>
+       </div>
+             <div class="main_left_links">
             	<ul class="nav nav_inner">
                 	<li><a href="javascript:void(0);">About Us</a></li>
                     <li><a href="javascript:void(0);">Our Mission</a></li>
                     <li><a href="javascript:void(0);">Contact Us</a></li>
                 </ul>
             </div>
-        </div>
-        <div id="main_right">
+         </div>
+           <div id="main_right">
             <div id="home_container">
             	<div class="home_right">
                 	<label class="user_outr">Hi User,</label>
                 	<input type="button" class="btn btn_home" value="Home" />
                     <input type="button" class="btn btn_home" value="Logout" />
-                   
                 </div>
-                
-                	<div class="issue_links">
-                    	<ul class="nav nav-pills">
-                            <li><a href="javascript:void(0);">Trending Issues</a></li>
-                            <li><a href="javascript:void(0);">Recent Issues</a></li>
-                            <li><a href="javascript:void(0);">Most Popular Tags</a></li>
-                        </ul>
-                	</div>
-                    <div class="search_box">
-                    	<a href="javascipt:void(0);" class="icon-search search_icon"></a>
-                        <input type="text" class="search-query seach_box_inner" value="Search for a Member,Constituency or a State" />
-                    </div>
-            </div>
-            <div class="random_issue">
+                <div class="text_editor_outr">
+                	<textarea name="textarea" class="jqte-test"><b>My contents are from <u><span style="color:rgb(0, 148, 133);">TEXTAREA</span></u></b></textarea>
+                </div>
+              </div>
+               <div class="random_issue">
             	<div class="home_issue_outr">
                 	<div class="home_left_pic"><img src="img/1.jpg" /></div>
                     <div class="home_right_detail">
@@ -102,17 +111,18 @@
                         </p>
                     </div>
                     <div class="likebutton">
-                        <div class="bound1">
+                      <div class="bound1">
                         <i class="icon-thumbs-up"></i><label>20</label><a href="#"> Support</a>
-                        <i class="icon-thumbs-down"></i><label>40</label><a href="#"> Deny</a>
+                          <i class="icon-thumbs-down"></i><label>40</label><a href="#"> Deny</a>
                         <i class="icon-comment"></i><label>60</label>
-                        </div>
-                           
-                            <div class="bound2">
-                            <a href="#">comment</a>
-                            </div>
-                        </div>
-                       <div class="comment_cont">
+                     </div>
+                 <div class="bound2">
+                      <a href="#">comment</a>
+                  </div>
+              </div>
+           </div> 
+      </div>
+     <div class="comment_cont">
      		<div class="user_outer">
             	<div class="img_outer">
                               <img src="img/1.jpg" />
@@ -142,14 +152,22 @@
                        </div>
           </div>                  
      </div>
+   </div>
+         
+   </div>
+</div>
+  
+  
+<script>
+    $('.jqte-test').jqte();
 
-                      </div>
-                    </div>
-                </div>
-             </div>
-        </div>
-
-
-        </form>
+    // settings of status
+    var jqteStatus = true;
+    $(".status").click(function () {
+        jqteStatus = jqteStatus ? false : true;
+        $('.jqte-test').jqte({ "status": jqteStatus })
+    });
+</script>
 </body>
+
 </html>

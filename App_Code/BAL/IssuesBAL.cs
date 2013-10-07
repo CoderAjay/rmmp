@@ -80,5 +80,19 @@ public class IssuesBAL
         {
         }
     }
+    public DataTable Issues_Numbers(Int64 mpId)
+    {
+        try
+        {
+            return ob.Issues_Numbers(mpId);
+        }
+        catch
+        {
+            throw;
+        }
+        finally
+        {
+        }
+    }
  
  }

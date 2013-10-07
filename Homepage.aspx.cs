@@ -170,6 +170,9 @@ public partial class Homepage : System.Web.UI.Page
                 commentbal.postComment(commentsbo);
                 ((Repeater)e.Item.FindControl("ListComments")).DataSource = (DataTable)commentbal.getComments(Convert.ToInt64(issueId));
                 ((Repeater)e.Item.FindControl("ListComments")).DataBind();
+                DataTable dt = issuesbal.getIssue(issueId);
+                ((Label)e.Item.FindControl("LBLcommentCount")).Text = dt.Rows[0]["commentCount"].ToString();
+
          
              }
         }
